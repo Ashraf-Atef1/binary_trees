@@ -15,15 +15,16 @@
  */
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 {
-	binary_tree_t *first_node = tree, *second_node = tree->right;
+	binary_tree_t *second_node;
 
-	if (!second_node)
+	if (!tree)
 		return (tree);
-	second_node->parent = first_node->parent;
-	first_node->parent = second_node;
-	first_node->right = second_node->left;
+	second_node = tree->right;
+	second_node->parent = tree->parent;
+	tree->parent = second_node;
+	tree->right = second_node->left;
 	if (second_node->left)
-		second_node->left->parent = first_node;
-	second_node->left = first_node;
+		second_node->left->parent = tree;
+	second_node->left = tree;
 	return (second_node);
 }
