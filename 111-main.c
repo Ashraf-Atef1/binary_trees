@@ -11,28 +11,23 @@ int main(void)
 {
 	bst_t *root;
 	bst_t *node;
+	int array[] = {
+		98, 110, 43};
+	size_t size = sizeof(array) / sizeof(array[0]);
+	size_t i;
 
 	root = NULL;
-	node = bst_insert(&root, 98);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 402);
-	printf("t-1\n");
-	printf("Inserted: %d\n", node->n);
-	printf("t-2\n");
-	node = bst_insert(&root, 12);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 46);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 128);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 256);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 512);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 1);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 128);
-	printf("Node should be nil -> %p\n", (void *)node);
+	for (i = 0; i < size; i++)
+	{
+		node = bst_insert(&root, array[i]);
+		if (node)
+			printf("Value inserted: %d\n", node->n);
+		else
+		{
+			printf("Value not inserted: %d\n", array[i]);
+		}
+	}
+
 	binary_tree_print(root);
 	return (0);
 }

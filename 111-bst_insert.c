@@ -23,7 +23,6 @@ bst_t *bst_insert(bst_t **tree, int value)
 	{
 		while (current_node)
 		{
-			printf("cur:%d\n", current_node->n);
 			if (value == current_node->n)
 				free(new_node), new_node = current_node = NULL;
 			else if (value < current_node->n && current_node->left)
