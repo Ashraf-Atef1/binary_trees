@@ -19,7 +19,7 @@ int binary_tree_is_complete_rec(const binary_tree_t *tree,
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-	return (binary_tree_is_complete_rec(tree, 0, binary_tree_size(tree)));
+	return (tree && binary_tree_is_complete_rec(tree, 0, binary_tree_size(tree)));
 }
 /**
  * binary_tree_is_complete_rec - Helper function to check
