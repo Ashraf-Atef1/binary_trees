@@ -1,31 +1,41 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_bst_rec - Helper function to check
+ * is_bst_rec - Helper function to check
  * if a binary tree is a BST recursively
  * @tree: Pointer to the root node of the subtree being checked
- * @prev: Pointer to the previous node in the inorder traversal sequence
+ * @root: Pointer to the previous node in the inorder traversal sequence
  *
  * This recursive function checks whether the binary tree rooted
  * at the specified node is a binary search tree (BST) by performing
  * an inorder traversal and comparing each
  * node with its predecessor in the inorder traversal sequence.
  *
- * @tree: Pointer to the root node of the subtree being checked
- * @prev: Pointer to the previous node in the inorder traversal sequence
- *
  * Return: 1 if the binary tree is a binary search tree (BST), 0 otherwise
  */
-int binary_tree_is_bst_rec(binary_tree_t *tree, binary_tree_t *prev)
+int is_bst_rec(binary_tree_t *tree, binary_tree_t *root)
 {
 	if (!tree)
 		return (1);
-	if (!binary_tree_is_bst_rec(tree->left, prev))
-		return (0);
-	if (prev != NULL && tree->n <= prev->n)
-		return (0);
-	prev = tree;
-	return (binary_tree_is_bst_rec(tree->right, prev));
+	if (tree && !tree->left && !tree->right)
+	{
+		binary_tree_t *curent_parent = tree->parent;
+		int is_left = curent_parent->left == tree;
+
+		while (curent_parent)
+		{
+			if (is_left && tree->n >= curent_parent->n)
+				return (0);
+			if (!is_left && tree->n <= curent_parent->n)
+				return (0);
+			if (!curent_parent->parent || curent_parent == root)
+				break;
+			is_left = curent_parent->parent->left == curent_parent;
+			curent_parent = curent_parent->parent;
+		}
+	}
+	return (is_bst_rec(tree->left, root) &&
+			is_bst_rec(tree->right, root));
 }
 
 /**
@@ -49,5 +59,5 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
-	return (tree ? binary_tree_is_bst_rec((binary_tree_t *)tree, NULL) : 0);
+	return (tree ? is_bst_rec((binary_tree_t *)tree, (binary_tree_t *)tree) : 0);
 }
