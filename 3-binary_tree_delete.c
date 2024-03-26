@@ -8,7 +8,7 @@
  * It recursively deletes all nodes in the left and right subtrees before
  * freeing the memory allocated for the current node.
  *
- * @Note: This function assumes that memory for the tree nodes
+ * Note: This function assumes that memory for the tree nodes
  * has been allocated dynamically using malloc(), and does not handle
  * any nodes allocated on the stack.
  * Calling this function on a non-dynamically allocated node may
