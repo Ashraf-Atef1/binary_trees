@@ -20,7 +20,7 @@ int is_bst_rec(binary_tree_t *tree, binary_tree_t *root)
 	if (tree && !tree->left && !tree->right)
 	{
 		binary_tree_t *curent_parent = tree->parent;
-		int is_left = curent_parent->left == tree;
+		int is_left = curent_parent && curent_parent->left == tree;
 
 		while (curent_parent)
 		{
@@ -34,8 +34,7 @@ int is_bst_rec(binary_tree_t *tree, binary_tree_t *root)
 			curent_parent = curent_parent->parent;
 		}
 	}
-	return (is_bst_rec(tree->left, root) &&
-			is_bst_rec(tree->right, root));
+	return (is_bst_rec(tree->left, root) && is_bst_rec(tree->right, root));
 }
 
 /**
@@ -57,7 +56,5 @@ int is_bst_rec(binary_tree_t *tree, binary_tree_t *root)
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-	if (!tree)
-		return (0);
 	return (tree ? is_bst_rec((binary_tree_t *)tree, (binary_tree_t *)tree) : 0);
 }
