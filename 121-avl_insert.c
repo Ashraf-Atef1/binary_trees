@@ -133,7 +133,6 @@ binary_tree_t *check_balance(binary_tree_t *node, binary_tree_t *root)
 		swap_nodes(parent, node), root = binary_tree_rotate_left(grand_parent);
 	else if (parent->right && grand_parent->left == parent)
 		swap_nodes(parent, node), root = binary_tree_rotate_right(grand_parent);
-	printf("test4n:%d\n", node->n);
 	return (root);
 }
 // binary_tree_t *check_balance(binary_tree_t *node, binary_tree_t *root)
