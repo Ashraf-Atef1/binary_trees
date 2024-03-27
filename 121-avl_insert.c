@@ -135,11 +135,3 @@ binary_tree_t *check_balance(binary_tree_t *node, binary_tree_t *root)
 		swap_nodes(parent, node), root = binary_tree_rotate_right(grand_parent);
 	return (root);
 }
-// binary_tree_t *check_balance(binary_tree_t *node, binary_tree_t *root)
-// {
-// 	if (!node)
-// 		return (root);
-// 	check_balance(node->left, root);
-// 	check_balance(node->right, root);
-// 	return (fix_balance(node, root));
-// }
