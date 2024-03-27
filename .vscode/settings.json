@@ -58,6 +58,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "binary_trees.h": "c",
-    "limits": "c"
+    "limits": "c",
+    "type_traits": "c"
   }
 }
