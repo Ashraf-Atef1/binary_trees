@@ -13,7 +13,7 @@
  * @tree: Pointer to a pointer to the root node of the AVL tree
  * @value: Value of the newly inserted node
  */
-void fix_blance(avl_t **tree, int value)
+void fix_balance(avl_t **tree, int value)
 {
 	int bfactor = binary_tree_balance(*tree);
 
@@ -74,7 +74,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 	else
 		*tree = new_node;
 	while (current_node)
-		fix_blance(current_node == *tree ? tree : &current_node, value),
+		fix_balance(current_node == *tree ? tree : &current_node, value),
 			current_node = current_node->parent;
 	return (new_node);
 }
