@@ -29,23 +29,25 @@ int main(void)
 	binary_tree_t *root;
 	int heap;
 
-	root = basic_tree();
+	root = binary_tree_node(NULL, 98);
+	root->left = binary_tree_node(root, 90);
+	root->right = binary_tree_node(root, 85);
+	root->left->left = binary_tree_node(root->left, 87);
+	root->left->right = binary_tree_node(root->left, 25);
+	root->right->left = binary_tree_node(root->right, 29);
+	/*root->right->right = binary_tree_node(root->right, 40);*/
+	/*root->right->right->left = binary_tree_node(root->right->right, 39);*/
+	/*root->right->right->right = binary_tree_node(root->right->right, 38);*/
+	root->right->left->left = binary_tree_node(root->right->left, 22);
+	root->right->left->right = binary_tree_node(root->right->left, 28);
+	root->left->right->left = binary_tree_node(root->left->right, 21);
+	root->left->right->right = binary_tree_node(root->left->right, 20);
+	root->left->left->left = binary_tree_node(root->left->left, 35);
+	root->left->left->right = binary_tree_node(root->left->left, 45);
+
+	heap = binary_tree_is_heap(root);
+	printf("Is the tree with root node (%d) a Max Heap: %d\n", root->n, heap);
 
 	binary_tree_print(root);
-	heap = binary_tree_is_heap(root);
-	printf("Is %d heap: %d\n", root->n, heap);
-	heap = binary_tree_is_heap(root->left);
-	printf("Is %d heap: %d\n", root->left->n, heap);
-
-	root->right->left = binary_tree_node(root->right, 97);
-	binary_tree_print(root);
-	heap = binary_tree_is_heap(root);
-	printf("Is %d heap: %d\n", root->n, heap);
-
-	root = basic_tree();
-	root->right->right = binary_tree_node(root->right, 79);
-	binary_tree_print(root);
-	heap = binary_tree_is_heap(root);
-	printf("Is %d heap: %d\n", root->n, heap);
 	return (0);
 }

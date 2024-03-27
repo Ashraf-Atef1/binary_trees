@@ -19,7 +19,7 @@ int binary_tree_balance(const binary_tree_t *tree);
  */
 int binary_tree_is_heap(const binary_tree_t *tree)
 {
-	return (tree ? binary_tree_balance(tree) && is_bst_rec(tree, tree) : 0);
+	return (tree ? is_bst_rec(tree, tree) : 0);
 }
 
 /**
@@ -47,7 +47,7 @@ int is_bst_rec(const binary_tree_t *tree, const binary_tree_t *root)
 		{
 			if (!curent_parent->left && curent_parent->right)
 				return (0);
-			if (tree->n >= curent_parent->n)
+			if (tree->n >= curent_parent->n || !binary_tree_balance(curent_parent))
 				return (0);
 			if (!curent_parent->parent || curent_parent == root)
 				break;
