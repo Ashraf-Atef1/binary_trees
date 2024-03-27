@@ -2,6 +2,7 @@
 
 int is_bst_rec(const binary_tree_t *tree, const binary_tree_t *root);
 int binary_tree_balance(const binary_tree_t *tree);
+size_t binary_tree_size(const binary_tree_t *tree);
 
 /**
  * binary_tree_is_heap - Checks if a binary tree is an HEAP tree
@@ -48,6 +49,9 @@ int is_bst_rec(const binary_tree_t *tree, const binary_tree_t *root)
 			if (!curent_parent->left && curent_parent->right)
 				return (0);
 			if (tree->n >= curent_parent->n || !binary_tree_balance(curent_parent))
+				return (0);
+			if (binary_tree_size(curent_parent->left) <
+				binary_tree_size(curent_parent->right))
 				return (0);
 			if (!curent_parent->parent || curent_parent == root)
 				break;
@@ -106,4 +110,24 @@ int binary_tree_balance(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 	return (balance_factor >= -1 && balance_factor <= 1);
+}
+/**
+ * binary_tree_size - Measures the size of a binary tree
+ * @tree: Pointer to the root node of the tree
+ *
+ * This function measures the size of the binary tree
+ * rooted at the specified node.
+ * The size of a binary tree is defined as
+ * the total number of nodes in the tree.
+ * The size of an empty tree is 0.
+ *
+ * @tree: Pointer to the root node of the tree
+ *
+ * Return: Size of the binary tree, or 0 if the tree is NULL
+ */
+size_t binary_tree_size(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }

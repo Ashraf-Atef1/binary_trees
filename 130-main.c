@@ -35,11 +35,11 @@ int main(void)
 	root->left->left = binary_tree_node(root->left, 87);
 	root->left->right = binary_tree_node(root->left, 25);
 	root->right->left = binary_tree_node(root->right, 29);
-	/*root->right->right = binary_tree_node(root->right, 40);*/
-	/*root->right->right->left = binary_tree_node(root->right->right, 39);*/
-	/*root->right->right->right = binary_tree_node(root->right->right, 38);*/
+	root->right->right = binary_tree_node(root->right, 40);
+	root->right->right->left = binary_tree_node(root->right->right, 39);
+	root->right->right->right = binary_tree_node(root->right->right, 38);
 	root->right->left->left = binary_tree_node(root->right->left, 22);
-	root->right->left->right = binary_tree_node(root->right->left, 28);
+	/*root->right->left->right = binary_tree_node(root->right->left, 28);*/
 	root->left->right->left = binary_tree_node(root->left->right, 21);
 	root->left->right->right = binary_tree_node(root->left->right, 20);
 	root->left->left->left = binary_tree_node(root->left->left, 35);
