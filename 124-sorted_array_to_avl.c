@@ -30,7 +30,6 @@ avl_t *sorted_array_to_avl_rec(int *array, int start, int end, avl_t *parent)
 
 	if (!newNode)
 		return (NULL);
-	printf("mid:%d\n", mid);
 	newNode->n = array[mid];
 	newNode->parent = parent;
 	newNode->left = sorted_array_to_avl_rec(array, start, mid - 1, newNode);
