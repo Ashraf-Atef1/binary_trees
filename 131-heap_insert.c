@@ -2,7 +2,7 @@
 
 heap_t *find_parent(heap_t *root);
 size_t binary_tree_size(const binary_tree_t *tree);
-void heapify_up(heap_t *node);
+void heapify_up(heap_t **root, heap_t *node);
 /**
  * heap_insert - Inserts a value in a Max Binary Heap
  * @root: Double pointer to the root node of the Heap
@@ -35,8 +35,10 @@ heap_t *heap_insert(heap_t **root, int value)
 		parent->right = new_node;
 
 	/* Heapify */
-	heapify_up(new_node);
+	heapify_up(root, new_node);
 
+	printf("root%d\n", (*root)->n);
+	printf("son%d\n", (*root)->left->n);
 	return (new_node);
 }
 
@@ -64,27 +66,63 @@ heap_t *find_parent(heap_t *root)
 	}
 	return (partent);
 }
+/**
+ * switch_nodes - Switches two nodes in a binary tree
+ * @root: Pointer to the root node of the binary tree
+ * @first: Pointer to the first node to switch
+ * @second: Pointer to the second node to switch
+ */
+void switch_nodes(binary_tree_t **root,
+				  binary_tree_t *first, binary_tree_t *second)
+{
+	binary_tree_t tmp_node = {0, NULL, NULL, NULL};
+
+	if (root == NULL || *root == NULL || first == NULL || second == NULL)
+		return;
+	tmp_node.n = first->n, tmp_node.parent = first->parent;
+	tmp_node.left = first->left, tmp_node.right = first->right;
+	first->parent = second, first->left = second->left;
+	first->right = second->right;
+	if (second->left)
+		second->left->parent = first;
+	if (second->right)
+		second->right->parent = first;
+	second->parent = tmp_node.parent;
+	if (tmp_node.parent)
+	{
+		if (first == tmp_node.parent->left)
+			tmp_node.parent->left = second;
+		else
+			tmp_node.parent->right = second;
+	}
+	if (second == tmp_node.left)
+	{
+		second->left = first, second->right = tmp_node.right;
+		if (tmp_node.right)
+			tmp_node.right->parent = second;
+	}
+	else if (second == tmp_node.right)
+	{
+		second->right = first, second->left = tmp_node.left;
+		if (tmp_node.left)
+			tmp_node.left->parent = second;
+	}
+	while (second->parent)
+		second = second->parent;
+	*root = second;
+}
 
 /**
  * heapify_up - Maintain the Max Heap property by swapping
  * the newlyinserted node upwards
+ * @root: Pointer to the root node of the binary tree
  * @node: Pointer to the newly inserted node
  */
-void heapify_up(heap_t *node)
+void heapify_up(heap_t **root, heap_t *node)
 {
-	int temp;
-
 	/* Traverse up the tree until the node satisfies the max heap property */
 	while (node->parent != NULL && node->n > node->parent->n)
-	{
-		/* Swap the values */
-		temp = node->n;
-		node->n = node->parent->n;
-		node->parent->n = temp;
-
-		/* Move to the parent node */
-		node = node->parent;
-	}
+		switch_nodes(root, node->parent, node);
 }
 
 /**
