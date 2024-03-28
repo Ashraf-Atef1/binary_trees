@@ -13,7 +13,8 @@ void heapify_up(heap_t **root, heap_t *node);
 heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *new_node = NULL;
-	heap_t *parent = NULL;
+	heap_t *parent = *root;
+	int i = 31, tree_size = binary_tree_size(*root) + 1;
 
 	if (*root == NULL)
 	{
@@ -22,18 +23,23 @@ heap_t *heap_insert(heap_t **root, int value)
 	}
 
 	/* Find the parent to insert the new node */
-	parent = (*root)->left || (*root)->right ? find_parent(*root) : (*root);
+	while (!(tree_size >> i--) & 1)
+		;
+	while (i)
+		if ((tree_size >> i--) & 1)
+			parent = parent->right;
+		else
+			parent = parent->left;
+
 	/* Create the new node */
 	new_node = binary_tree_node(parent, value);
 	if (new_node == NULL)
 		return (NULL);
-
 	/* Connect the new node to the parent */
-	if (parent->left == NULL)
-		parent->left = new_node;
-	else
+	if (tree_size & 1)
 		parent->right = new_node;
-
+	else
+		parent->left = new_node;
 	/* Heapify */
 	heapify_up(root, new_node);
 
@@ -48,19 +54,18 @@ heap_t *heap_insert(heap_t **root, int value)
  */
 heap_t *find_parent(heap_t *root)
 {
-	heap_t *partent;
-	int left_size,
-		right_size;
+	heap_t *partent = root;
+	int i = 31, tree_size = binary_tree_size(root) + 1;
 
+	while ((tree_size >> i--) & 1)
+		;
 	while (root)
 	{
-		partent = root,
-		left_size = binary_tree_size(root->left),
-		right_size = binary_tree_size(root->right);
-		if (left_size - 1 <= right_size && right_size % 2)
-			root = root->left;
-		else
+		partent = root;
+		if ((tree_size >> i) & 1)
 			root = root->right;
+		else
+			root = root->left;
 	}
 	return (partent);
 }

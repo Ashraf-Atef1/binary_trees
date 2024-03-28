@@ -12,7 +12,7 @@ int main(void)
 	heap_t *root;
 	heap_t *node;
 	int array[] = {
-		98, 110, 43};
+		98, 110, 43, 56, 2, 78, 123, 76, 234};
 	size_t size = sizeof(array) / sizeof(array[0]);
 	size_t i;
 
@@ -26,6 +26,7 @@ int main(void)
 		{
 			printf("Value not inserted: %d\n", array[i]);
 		}
+		binary_tree_print(root);
 	}
 
 	binary_tree_print(root);
