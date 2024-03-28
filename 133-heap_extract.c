@@ -24,6 +24,11 @@ int heap_extract(heap_t **root)
 
 	if (!new_root)
 		return (0);
+	if (!new_root->left && !new_root->right)
+	{
+		i = new_root->n, free(new_root), *root = NULL;
+		return (i);
+	}
 	while (!(tree_size >> i--) & 1)
 		;
 	while (i)
