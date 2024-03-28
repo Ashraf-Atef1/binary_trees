@@ -9,28 +9,18 @@
  */
 int main(void)
 {
-	heap_t *tree;
+	heap_t *root;
 	int array[] = {
-		79, 2};
-	size_t n = sizeof(array) / sizeof(array[0]);
-	int extract;
+		98, 110, 43, 56, 2, 78, 123, 76, 234};
+	size_t size = sizeof(array) / sizeof(array[0]);
+	int value;
 
-	tree = array_to_heap(array, n);
-	if (!tree)
-		return (1);
-	binary_tree_print(tree);
+	root = array_to_heap(array, size);
+	binary_tree_print(root);
 
-	extract = heap_extract(&tree);
-	printf("Extracted: %d\n", extract);
-	binary_tree_print(tree);
+	value = heap_extract(&root);
+	printf("Extracted: %d\n", value);
+	binary_tree_print(root);
 
-	extract = heap_extract(&tree);
-	printf("Extracted: %d\n", extract);
-	binary_tree_print(tree);
-
-	extract = heap_extract(&tree);
-	printf("Extracted: %d\n", extract);
-	binary_tree_print(tree);
-	binary_tree_delete(tree);
 	return (0);
 }
