@@ -47,29 +47,6 @@ heap_t *heap_insert(heap_t **root, int value)
 }
 
 /**
- * find_parent - Find the parent to insert the new node
- * @root: Pointer to the root node of the Heap
- *
- * Return: Pointer to the parent node
- */
-heap_t *find_parent(heap_t *root)
-{
-	heap_t *partent = root;
-	int i = 31, tree_size = binary_tree_size(root) + 1;
-
-	while ((tree_size >> i--) & 1)
-		;
-	while (root)
-	{
-		partent = root;
-		if ((tree_size >> i) & 1)
-			root = root->right;
-		else
-			root = root->left;
-	}
-	return (partent);
-}
-/**
  * switch_nodes - Switches two nodes in a binary tree
  * @root: Pointer to the root node of the binary tree
  * @first: Pointer to the first node to switch
