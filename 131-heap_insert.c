@@ -1,6 +1,5 @@
 #include "binary_trees.h"
 
-heap_t *find_parent(heap_t *root);
 size_t binary_tree_size(const binary_tree_t *tree);
 void heapify_up(heap_t **root, heap_t *node);
 /**
