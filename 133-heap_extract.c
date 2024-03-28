@@ -69,69 +69,69 @@ int heap_extract(heap_t **root)
 	return (i);
 }
 
-// /**
-//  * switch_nodes - Switches two nodes in a binary tree
-//  * @root: Pointer to the root node of the binary tree
-//  * @first: Pointer to the first node to switch
-//  * @second: Pointer to the second node to switch
-//  */
-// void switch_nodes(binary_tree_t **root,
-// 				  binary_tree_t *first, binary_tree_t *second)
-// {
-// 	binary_tree_t tmp_node = {0, NULL, NULL, NULL};
+/**
+ * switch_nodes - Switches two nodes in a binary tree
+ * @root: Pointer to the root node of the binary tree
+ * @first: Pointer to the first node to switch
+ * @second: Pointer to the second node to switch
+ */
+void switch_nodes(binary_tree_t **root,
+				  binary_tree_t *first, binary_tree_t *second)
+{
+	binary_tree_t tmp_node = {0, NULL, NULL, NULL};
 
-// 	if (root == NULL || *root == NULL || first == NULL || second == NULL)
-// 		return;
-// 	tmp_node.n = first->n, tmp_node.parent = first->parent;
-// 	tmp_node.left = first->left, tmp_node.right = first->right;
-// 	first->parent = second, first->left = second->left;
-// 	first->right = second->right;
-// 	if (second->left)
-// 		second->left->parent = first;
-// 	if (second->right)
-// 		second->right->parent = first;
-// 	second->parent = tmp_node.parent;
-// 	if (tmp_node.parent)
-// 	{
-// 		if (first == tmp_node.parent->left)
-// 			tmp_node.parent->left = second;
-// 		else
-// 			tmp_node.parent->right = second;
-// 	}
-// 	if (second == tmp_node.left)
-// 	{
-// 		second->left = first, second->right = tmp_node.right;
-// 		if (tmp_node.right)
-// 			tmp_node.right->parent = second;
-// 	}
-// 	else if (second == tmp_node.right)
-// 	{
-// 		second->right = first, second->left = tmp_node.left;
-// 		if (tmp_node.left)
-// 			tmp_node.left->parent = second;
-// 	}
-// 	while (second->parent)
-// 		second = second->parent;
-// 	*root = second;
-// }
+	if (root == NULL || *root == NULL || first == NULL || second == NULL)
+		return;
+	tmp_node.n = first->n, tmp_node.parent = first->parent;
+	tmp_node.left = first->left, tmp_node.right = first->right;
+	first->parent = second, first->left = second->left;
+	first->right = second->right;
+	if (second->left)
+		second->left->parent = first;
+	if (second->right)
+		second->right->parent = first;
+	second->parent = tmp_node.parent;
+	if (tmp_node.parent)
+	{
+		if (first == tmp_node.parent->left)
+			tmp_node.parent->left = second;
+		else
+			tmp_node.parent->right = second;
+	}
+	if (second == tmp_node.left)
+	{
+		second->left = first, second->right = tmp_node.right;
+		if (tmp_node.right)
+			tmp_node.right->parent = second;
+	}
+	else if (second == tmp_node.right)
+	{
+		second->right = first, second->left = tmp_node.left;
+		if (tmp_node.left)
+			tmp_node.left->parent = second;
+	}
+	while (second->parent)
+		second = second->parent;
+	*root = second;
+}
 
-// /**
-//  * binary_tree_size - Measures the size of a binary tree
-//  * @tree: Pointer to the root node of the tree
-//  *
-//  * This function measures the size of the binary tree
-//  * rooted at the specified node.
-//  * The size of a binary tree is defined as
-//  * the total number of nodes in the tree.
-//  * The size of an empty tree is 0.
-//  *
-//  * @tree: Pointer to the root node of the tree
-//  *
-//  * Return: Size of the binary tree, or 0 if the tree is NULL
-//  */
-// size_t binary_tree_size(const binary_tree_t *tree)
-// {
-// 	if (!tree)
-// 		return (0);
-// 	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
-// }
+/**
+ * binary_tree_size - Measures the size of a binary tree
+ * @tree: Pointer to the root node of the tree
+ *
+ * This function measures the size of the binary tree
+ * rooted at the specified node.
+ * The size of a binary tree is defined as
+ * the total number of nodes in the tree.
+ * The size of an empty tree is 0.
+ *
+ * @tree: Pointer to the root node of the tree
+ *
+ * Return: Size of the binary tree, or 0 if the tree is NULL
+ */
+size_t binary_tree_size(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
+}
