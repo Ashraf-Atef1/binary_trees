@@ -1,56 +1,34 @@
-Value inserted: 704
-Value inserted: 309
-Value inserted: 995
-Value inserted: 739
-Value inserted: 526
-Value inserted: 294
-Value inserted: 783
-Value inserted: 645
-Value inserted: 11
-Value inserted: 775
-Value inserted: 689
-Value inserted: 452
-Value inserted: 390
-Value inserted: 770
-Value inserted: 189
-Value inserted: 369
-Value inserted: 300
-Value inserted: 721
-Value inserted: 891
-Value inserted: 6
-Value inserted: 225
-Value inserted: 298
-Value inserted: 846
-Value inserted: 549
-Value inserted: 118
-Value inserted: 278
-Value inserted: 124
-Value inserted: 867
-Value inserted: 217
-Value inserted: 468
-Value inserted: 804
-Value inserted: 543
-Value inserted: 876
-Value inserted: 65
-Value inserted: 179
-Value inserted: 2
-Value inserted: 382
-Value inserted: 568
-Value inserted: 321
-Value inserted: 768
-Value inserted: 56
-Value inserted: 422
-Value inserted: 586
-Value inserted: 574
-Value inserted: 533
-Value inserted: 148
-Value inserted: 707
-Value inserted: 701
-Value inserted: 715
-Value inserted: 735
-                                                                             .-----------------------------------------------------------------------------(995)----------------------------------------------------.
-                                     .-------------------------------------(891)-------------------------------------.                                                                          .-----------------(867)-----------------.
-                 .-----------------(876)-----------------.                                       .-----------------(846)-----------------.                                       .------------(735)-------.                   .-------(804)-------.
-       .-------(775)-------.                   .-------(721)-------.                   .-------(768)-------.                   .-------(739)-------.                   .-------(715)-------.         .--(390)--.         .--(770)--.         .--(783)--.
-  .--(543)--.         .--(300)--.         .--(382)--.         .--(645)--.         .--(526)--.         .--(586)--.         .--(574)--.         .--(707)--.         .--(549)--.         .--(701)     (278)     (124)     (704)     (217)     (189)     (468)
-(309)     (369)     (065)     (179)     (002)     (011)     (568)     (321)     (006)     (056)     (225)     (422)     (298)     (533)     (148)     (689)     (294)     (452)     (118)
+                 .-------(234)-------.
+       .-------(123)--.         .--(110)--.
+  .--(098)--.       (002)     (043)     (078)
+(056)     (076)
+Extracted: 234
+            .-------(123)-------.
+       .--(098)--.         .--(110)--.
+  .--(076)     (002)     (043)     (078)
+(056)
+Extracted: 123
+       .-------(110)-------.
+  .--(098)--.         .--(078)--.
+(076)     (002)     (043)     (056)
+Extracted: 110
+       .-------(098)-------.
+  .--(076)--.         .--(078)
+(056)     (002)     (043)
+Extracted: 98
+       .-------(078)--.
+  .--(076)--.       (043)
+(056)     (002)
+Extracted: 78
+       .--(076)--.
+  .--(056)     (043)
+(002)
+Extracted: 76
+  .--(056)--.
+(002)     (043)
+Extracted: 56
+  .--(043)
+(002)
+Extracted: 43
+(002)
+Extracted: 2
