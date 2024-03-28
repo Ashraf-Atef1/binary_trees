@@ -37,8 +37,6 @@ heap_t *heap_insert(heap_t **root, int value)
 	/* Heapify */
 	heapify_up(root, new_node);
 
-	printf("root%d\n", (*root)->n);
-	printf("son%d\n", (*root)->left->n);
 	return (new_node);
 }
 
